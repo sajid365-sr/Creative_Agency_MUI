@@ -24,15 +24,12 @@ export default function Header(props){
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
-      </Typography>
+    <Box onClick={()=> setMobileOpen(!mobileOpen)} sx={{ textAlign: 'center' }}>
+      <Box sx={{my:2}}>
+        <img src="https://i.ibb.co/JsvBDwD/logo.png" style={{width:'150px'}} alt="" />
+      </Box>
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -63,7 +60,7 @@ export default function Header(props){
             color="inherit"
             aria-label="open drawer"
             edge="start"
-            onClick={handleDrawerToggle}
+            onClick={()=> setMobileOpen(!mobileOpen)}
             sx={{ mr: 2, display: { sm: 'none' }, color:'primary.main' }}
           >
             <MenuIcon />
@@ -87,7 +84,7 @@ export default function Header(props){
           container={container}
           variant="temporary"
           open={mobileOpen}
-          onClose={handleDrawerToggle}
+          onClose={()=> setMobileOpen(!mobileOpen)}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}
